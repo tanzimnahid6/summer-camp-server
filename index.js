@@ -27,7 +27,25 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    const classCollection = client.db("summerSchool").collection("allClass")
+    const classCollection = client.db("summerSchool").collection("allClass");
+    const userCollection = client.db("summerSchool").collection("users")
+
+          //save user email and role in Db
+          app.put("/users/:email", async (req, res) => {
+            const email = req.params.email
+            const user = req.body
+            const filter = { email: email }
+            const options = { upsert: true }
+            console.log(user);
+            console.log(email);
+            const updatedDoc = {
+              $set: user,
+            }
+            const result = await userCollection.updateOne(filter, updatedDoc, options)
+            console.log(result)
+            res.send(result)
+          })
+    
 
     //Get all class from database =========================================
     app.get("/allClass", async (req, res) => {
@@ -35,13 +53,14 @@ async function run() {
       res.send(result)
     })
 
-    
+
     //Get popular  class from database =========================================
     app.get("/popularClass", async (req, res) => {
       const query = { enrolled_classes: { $gt: 5 } };
       const result = await classCollection.find(query).toArray()
       res.send(result)
     })
+   
 
 
 
