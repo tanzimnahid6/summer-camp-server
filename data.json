@@ -1,0 +1,122 @@
+[
+    {
+      "name": "The Artful Chef",
+      "starting_date": "2023-09-01",
+      "available_seats": 20,
+      "instructor_name": "Chef Julia Stevens",
+      "instructor_popularity": "High",
+      "price": 500,
+      "rating": 4.5,
+      "description": "The Artful Chef is a renowned culinary school dedicated to providing aspiring chefs with top-notch training in the culinary arts. Our experienced instructor, Chef Julia Stevens, will guide you through hands-on cooking classes, teaching you essential techniques and the secrets of creating delectable dishes. With a limited class size of 20, you'll receive personalized attention and have ample opportunities to sharpen your skills. Join us and embark on a culinary journey that will ignite your passion for cooking!",
+      "picture": "https://i.ibb.co/s2KcKYW/pexels-evgenia-basyrova-4995094.jpg",
+      "enrolled_classes": 5
+    },
+    {
+      "name": "Gourmet Gastronomy",
+      "starting_date": "2023-10-15",
+      "available_seats": 15,
+      "instructor_name": "Chef Michael Anderson",
+      "instructor_popularity": "Moderate",
+      "price": 650,
+      "rating": 4.8,
+      "description": "At Gourmet Gastronomy, we believe that cooking is an art form. Our experienced chef, Chef Michael Anderson, will take you on a gastronomic adventure, where you'll learn the art of creating exquisite dishes from scratch. With a focus on using fresh, locally sourced ingredients, you'll master a range of culinary techniques and explore the flavors of various cuisines. Our small class size of 15 ensures individual attention and a supportive learning environment. Join us and discover the joy of culinary creativity!",
+      "picture": "https://i.ibb.co/X2ybGxx/pexels-kampus-production-8511873.jpg",
+      "enrolled_classes": 3
+    },
+    {
+      "name": "Culinary Institute of Excellence",
+      "starting_date": "2023-11-05",
+      "available_seats": 25,
+      "instructor_name": "Chef Robert Thompson",
+      "instructor_popularity": "High",
+      "price": 700,
+      "rating": 4.7,
+      "description": "The Culinary Institute of Excellence is a prestigious culinary school committed to excellence in culinary education. Led by Chef Robert Thompson, a renowned expert in the field, our program offers comprehensive training in classical and modern cooking techniques. From mastering knife skills to perfecting complex recipes, you'll develop the knowledge and skills required to excel in the culinary industry. With a maximum of 25 students per class, you'll receive personalized instruction and valuable hands-on experience. Join us and embark on a journey towards culinary mastery!",
+      "picture": "https://i.ibb.co/YtrRLr7/pexels-mario-schafer-11322619.jpg",
+      "enrolled_classes": 6
+    },
+    {
+      "name": "Taste Buds Culinary Academy",
+      "starting_date": "2023-09-15",
+      "available_seats": 12,
+      "instructor_name": "Chef Samantha Collins",
+      "instructor_popularity": "Low",
+      "price": 450,
+      "rating": 4.2,
+      "description": "Taste Buds Culinary Academy is a dynamic culinary school where young aspiring chefs can unleash their creativity. Under the guidance of Chef Samantha Collins, you'll explore the world of flavors and learn to create exciting dishes. With a focus on using fresh and organic ingredients, our small class of 12 students allows for personalized attention and fosters a collaborative learning environment. Join us and let your taste buds take you on a culinary adventure!",
+      "picture": "https://i.ibb.co/pyvZW1W/pexels-rachel-claire-4577167.jpg",
+      "enrolled_classes": 2
+    },
+    {
+      "name": "MasterChef Cooking School",
+      "starting_date": "2023-09-20",
+      "available_seats": 18,
+      "instructor_name": "Chef David Anderson",
+      "instructor_popularity": "High",
+      "price": 550,
+      "rating": 4.6,
+      "description": "At MasterChef Cooking School, we believe that everyone has the potential to become a master chef. Led by Chef David Anderson, a seasoned culinary expert, our program combines hands-on training with a creative approach to cooking. From mastering fundamental techniques to exploring innovative recipes, you'll develop the skills and confidence to cook like a pro. With a maximum of 18 students per class, you'll receive personalized attention and ample opportunities to showcase your culinary creations. Join us and embark on a culinary journey to unlock your full potential!",
+      "picture": "https://i.ibb.co/RgCH36R/pexels-taryn-elliott-4457125.jpg",
+      "enrolled_classes": 4
+    },
+    {
+      "name": "Foodie's Paradise",
+      "starting_date": "2023-10-01",
+      "available_seats": 10,
+      "instructor_name": "Chef Emily Wilson",
+      "instructor_popularity": "Moderate",
+      "price": 800,
+      "rating": 4.9,
+      "description": "Foodie's Paradise is a culinary school dedicated to indulging your passion for food. Led by Chef Emily Wilson, an expert in gourmet cuisine, our program offers a blend of traditional and contemporary cooking techniques. From refining your knife skills to creating elaborate dishes, you'll learn the art of culinary finesse. With a small class size of 10, you'll receive personalized guidance and have the opportunity to work closely with our experienced chef. Join us and let your love for food flourish in Foodie's Paradise!",
+      "picture": "https://i.ibb.co/CJsrk89/pexels-valeria-boltneva-7474271.jpg",
+      "enrolled_classes": 7
+    },
+    {
+      "name": "Culinary Arts Academy",
+      "starting_date": "2023-10-10",
+      "available_seats": 30,
+      "instructor_name": "Chef William Johnson",
+      "instructor_popularity": "High",
+      "price": 600,
+      "rating": 4.4,
+      "description": "Culinary Arts Academy is a leading culinary school renowned for its comprehensive training programs. Under the guidance of Chef William Johnson, a highly skilled chef with years of industry experience, you'll develop a solid foundation in culinary arts. From basic cooking techniques to advanced culinary skills, our program covers it all. With a spacious and well-equipped kitchen facility, you'll have the perfect environment to enhance your skills. Join us and unlock your culinary potential at Culinary Arts Academy!",
+      "picture": "https://i.ibb.co/D19h4db/pexels-alena-shekhovtcova-6940978.jpg",
+      "enrolled_classes": 9
+    },
+    {
+      "name": "The Spice Route",
+      "starting_date": "2023-10-25",
+      "available_seats": 16,
+      "instructor_name": "Chef Jasmine Patel",
+      "instructor_popularity": "Moderate",
+      "price": 550,
+      "rating": 4.7,
+      "description": "Embark on a culinary journey through The Spice Route. Led by Chef Jasmine Patel, an expert in flavor combinations, this culinary school will introduce you to the vibrant world of spices and herbs. From mastering the art of seasoning to creating exotic dishes, you'll develop a deep understanding of flavors and aromas. With a maximum of 16 students per class, you'll receive personalized attention and have the opportunity to explore the diverse cuisines influenced by spices. Join us and discover the tantalizing world of The Spice Route!",
+      "picture": "https://i.ibb.co/NjXd4qX/pexels-anna-pou-8330249.jpg",
+      "enrolled_classes": 1
+    },
+    {
+      "name": "Cooking and Beyond",
+      "starting_date": "2023-11-12",
+      "available_seats": 20,
+      "instructor_name": "Chef Alexandra Martin",
+      "instructor_popularity": "High",
+      "price": 550,
+      "rating": 4.5,
+      "description": "Cooking and Beyond is a culinary school that goes beyond the basics. Led by Chef Alexandra Martin, a passionate advocate for global cuisine, our program will expand your culinary horizons. From exploring traditional recipes to experimenting with innovative flavors, you'll learn to create exceptional dishes that transcend borders. With a focus on cultural appreciation and sustainability, Cooking and Beyond offers a unique culinary experience. Join us and embark on a flavorful journey that transcends the ordinary!",
+      "picture": "https://i.ibb.co/X2ybGxx/pexels-kampus-production-8511873.jpg",
+      "enrolled_classes": 3
+    },
+    {
+      "name": "Culinary Explorers",
+      "starting_date": "2023-11-20",
+      "available_seats": 15,
+      "instructor_name": "Chef Benjamin Sanchez",
+      "instructor_popularity": "Low",
+      "price": 600,
+      "rating": 4.6,
+      "description": "Culinary Explorers is a culinary school that embraces the spirit of adventure and curiosity in cooking. Under the guidance of Chef Benjamin Sanchez, a seasoned culinary explorer, you'll embark on a gastronomic journey to discover flavors from around the world. From mastering regional cuisines to experimenting with fusion dishes, you'll expand your culinary repertoire. With a small class size of 15, you'll receive personalized attention and have the opportunity to engage in hands-on culinary experiments. Join us and let your culinary exploration begin!",
+      "picture": "https://i.ibb.co/pyvZW1W/pexels-rachel-claire-4577167.jpg",
+      "enrolled_classes": 5
+    }
+  ]
