@@ -60,6 +60,11 @@ async function run() {
       const result = await classCollection.find(query).toArray()
       res.send(result)
     })
+    //get all login users ===================================================
+    app.get('/users',async (req,res)=>{
+      const result = await userCollection.find().toArray()
+      res.send(result)
+    })
    
 
 
