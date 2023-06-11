@@ -27,25 +27,31 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    const classCollection = client.db("summerSchool").collection("allClass");
+    const classCollection = client.db("summerSchool").collection("allClass")
     const userCollection = client.db("summerSchool").collection("users")
 
-          //save user email and role in Db
-          app.put("/users/:email", async (req, res) => {
-            const email = req.params.email
-            const user = req.body
-            const filter = { email: email }
-            const options = { upsert: true }
-            console.log(user);
-            console.log(email);
-            const updatedDoc = {
-              $set: user,
-            }
-            const result = await userCollection.updateOne(filter, updatedDoc, options)
-            console.log(result)
-            res.send(result)
-          })
-    
+    //save user email and role in Db
+    app.put("/users/:email", async (req, res) => {
+      const email = req.params.email
+      const user = req.body
+      const filter = { email: email }
+      const options = { upsert: true }
+
+      const updatedDoc = {
+        $set: user,
+      }
+      const result = await userCollection.updateOne(filter, updatedDoc, options)
+      res.send(result)
+    })
+
+    //Upload a new class from user=========================================
+    app.post('/allClass',async (req,res)=>{
+      const doc = req.body;
+      const result = await classCollection.insertOne(doc);
+      res.send(result)
+   
+    })
+
 
     //Get all class from database =========================================
     app.get("/allClass", async (req, res) => {
@@ -53,28 +59,24 @@ async function run() {
       res.send(result)
     })
 
-
-    //Get popular  class from database =========================================
+    //Get popular  class from database ====================================
     app.get("/popularClass", async (req, res) => {
-      const query = { enrolled_classes: { $gt: 5 } };
+      const query = { enrolled_classes: { $gt: 5 } }
       const result = await classCollection.find(query).toArray()
       res.send(result)
     })
-    //get all login users ===================================================
-    app.get('/users',async (req,res)=>{
+    //get all login users =================================================
+    app.get("/users", async (req, res) => {
       const result = await userCollection.find().toArray()
       res.send(result)
     })
-   
+    app.get("/users/:email", async (req, res) => {
+      const email = req.params.email
+      const query = { email: email }
 
-
-
-
-
-
-
-
-
+      const result = await userCollection.findOne(query)
+      res.send(result)
+    })
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 })
