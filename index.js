@@ -45,19 +45,29 @@ async function run() {
     })
 
     //Upload a new class from user=========================================
-    app.post('/allClass',async (req,res)=>{
-      const doc = req.body;
-      const result = await classCollection.insertOne(doc);
+    app.post("/allClass", async (req, res) => {
+      const doc = req.body
+      const result = await classCollection.insertOne(doc)
       res.send(result)
-   
     })
 
+    //get all class for a current user ====================================
+    app.get('/allClass/:email',async (req,res)=>{
+      const email = req.params.email;
+      const query = {instructor_email:email}
+      const result = await classCollection.find(query).toArray();
+      res.send(result)
+    })
+
+    
 
     //Get all class from database =========================================
     app.get("/allClass", async (req, res) => {
       const result = await classCollection.find().toArray()
       res.send(result)
     })
+
+
 
     //Get popular  class from database ====================================
     app.get("/popularClass", async (req, res) => {
