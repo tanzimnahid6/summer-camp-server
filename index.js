@@ -52,14 +52,12 @@ async function run() {
     })
 
     //get all class for a current user ====================================
-    app.get('/allClass/:email',async (req,res)=>{
-      const email = req.params.email;
-      const query = {instructor_email:email}
-      const result = await classCollection.find(query).toArray();
+    app.get("/allClass/:email", async (req, res) => {
+      const email = req.params.email
+      const query = { instructor_email: email }
+      const result = await classCollection.find(query).toArray()
       res.send(result)
     })
-
-    
 
     //Get all class from database =========================================
     app.get("/allClass", async (req, res) => {
@@ -68,13 +66,11 @@ async function run() {
     })
 
     //get all approved classes ==============================================
-    app.get('/approvedClass',async (req,res)=>{
-      const query = {status:"approved"}
+    app.get("/approvedClass", async (req, res) => {
+      const query = { status: "approved" }
       const result = await classCollection.find(query).toArray()
       res.send(result)
     })
-
-
 
     //Get popular  class from database ====================================
     app.get("/popularClass", async (req, res) => {
@@ -87,11 +83,25 @@ async function run() {
       const result = await userCollection.find().toArray()
       res.send(result)
     })
+    //get a user from his email===========================================
     app.get("/users/:email", async (req, res) => {
       const email = req.params.email
       const query = { email: email }
-
       const result = await userCollection.findOne(query)
+      res.send(result)
+    })
+
+    //update course status ==============================================
+    app.patch("/allClass/:id", async (req, res) => {
+      const id = req.params.id
+      const body = req.body
+      const query = { _id: new ObjectId(id) }
+      const updateDoc = {
+        $set: {
+          status: body.status,
+        },
+      }
+      const result = await classCollection.updateOne(query, updateDoc)
       res.send(result)
     })
 
