@@ -67,6 +67,13 @@ async function run() {
       res.send(result)
     })
 
+    //get all approved classes ==============================================
+    app.get('/approvedClass',async (req,res)=>{
+      const query = {status:"approved"}
+      const result = await classCollection.find(query).toArray()
+      res.send(result)
+    })
+
 
 
     //Get popular  class from database ====================================
