@@ -29,6 +29,7 @@ async function run() {
   try {
     const classCollection = client.db("summerSchool").collection("allClass")
     const userCollection = client.db("summerSchool").collection("users")
+    const enrolledCollection = client.db("summerSchool").collection("enrolled")
 
     //save user email and role in Db
     app.put("/users/:email", async (req, res) => {
@@ -121,22 +122,26 @@ async function run() {
     })
 
     //update user role====================================================\
-    app.put('/updateUserRole/:id',async (req,res)=>{
-      const id = req.params.id;
-      const body = req.body ;
-      const query = {_id: new ObjectId(id)}
+    app.put("/updateUserRole/:id", async (req, res) => {
+      const id = req.params.id
+      const body = req.body
+      const query = { _id: new ObjectId(id) }
       const options = { upsert: true }
 
       const updateDoc = {
         $set: {
-          role: body.role
+          role: body.role,
         },
-      };
+      }
 
-      const result = await userCollection.updateOne(query,updateDoc,options)
+      const result = await userCollection.updateOne(query, updateDoc, options)
       res.send(result)
-
     })
+
+
+
+
+    
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 })
