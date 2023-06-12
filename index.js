@@ -92,7 +92,7 @@ async function run() {
     })
 
     //update course status ==============================================
-    app.patch("/allClass/:id", async (req, res) => {
+    app.put("/allClass/:id", async (req, res) => {
       const id = req.params.id
       const body = req.body
       const query = { _id: new ObjectId(id) }
@@ -102,6 +102,21 @@ async function run() {
         },
       }
       const result = await classCollection.updateOne(query, updateDoc)
+      res.send(result)
+    })
+
+    //update course feedback ==============================================
+    app.put("/feedBack/:id", async (req, res) => {
+      const id = req.params.id
+      const body = req.body
+      const query = { _id: new ObjectId(id) }
+      options = { upsert: true }
+      const updateDoc = {
+        $set: {
+          feedback: body.feedback,
+        },
+      }
+      const result = await classCollection.updateOne(query, updateDoc, options)
       res.send(result)
     })
 
