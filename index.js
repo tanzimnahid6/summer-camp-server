@@ -110,7 +110,7 @@ async function run() {
       const id = req.params.id
       const body = req.body
       const query = { _id: new ObjectId(id) }
-      options = { upsert: true }
+      const options = { upsert: true }
       const updateDoc = {
         $set: {
           feedback: body.feedback,
@@ -118,6 +118,24 @@ async function run() {
       }
       const result = await classCollection.updateOne(query, updateDoc, options)
       res.send(result)
+    })
+
+    //update user role====================================================\
+    app.put('/updateUserRole/:id',async (req,res)=>{
+      const id = req.params.id;
+      const body = req.body ;
+      const query = {_id: new ObjectId(id)}
+      const options = { upsert: true }
+
+      const updateDoc = {
+        $set: {
+          role: body.role
+        },
+      };
+
+      const result = await userCollection.updateOne(query,updateDoc,options)
+      res.send(result)
+
     })
 
     // Send a ping to confirm a successful connection
