@@ -3,6 +3,7 @@ const app = express()
 const cors = require("cors")
 require("dotenv").config()
 const port = process.env.PORT || 5000
+const stripe = require("stripe")(process.env.PAYMENT_SECRET_KEY)
 
 // middleware
 const corsOptions = {
@@ -32,6 +33,7 @@ async function run() {
     const selectClassCollection = client
       .db("summerSchool")
       .collection("selected")
+    const paymentCollection = client.db('summerSchool').collection('payment')
 
     //save user email and role in Db
     app.put("/users/:email", async (req, res) => {
@@ -167,6 +169,28 @@ async function run() {
       const id = req.params.id
       const filter = { _id: new ObjectId(id) }
       const result = await selectClassCollection.deleteOne(filter)
+      res.send(result)
+    })
+
+    //create payment intent=========================================================================================
+    app.post("/create-payment-intent", async (req, res) => {
+      const { price } = req.body
+      const amount = price * 100
+
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: amount,
+        currency: "usd",
+        payment_method_types: ["card"],
+      })
+      res.send({
+        clientSecret: paymentIntent.client_secret,
+      })
+    })
+
+    //payment related api==========================
+    app.post('/payments',async (req,res)=>{
+      const payment = req.body;
+      const result = await paymentCollection.insertOne(payment)
       res.send(result)
     })
 
