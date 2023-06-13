@@ -29,7 +29,9 @@ async function run() {
   try {
     const classCollection = client.db("summerSchool").collection("allClass")
     const userCollection = client.db("summerSchool").collection("users")
-    const enrolledCollection = client.db("summerSchool").collection("enrolled")
+    const selectClassCollection = client
+      .db("summerSchool")
+      .collection("selected")
 
     //save user email and role in Db
     app.put("/users/:email", async (req, res) => {
@@ -138,10 +140,35 @@ async function run() {
       res.send(result)
     })
 
+    //save user select class to database==================================
+    app.post("/selectClass", async (req, res) => {
+      const selectClass = req.body
+      const isExist = await selectClassCollection.findOne(selectClass)
 
+      if (isExist) {
+        const message = { warning: true }
+        res.send(message)
+      } else {
+        const result = await selectClassCollection.insertOne(selectClass)
+        res.send(result)
+      }
+    })
 
+    //get selected class===================================================
+    app.get("/selectClass/:email", async (req, res) => {
+      const email = req.params.email
+      const query = { userEmail: email }
+      const result = await selectClassCollection.find(query).toArray()
+      res.send(result)
+    })
 
-    
+    //Delete selected data============================================
+    app.delete("/selectClass/:id", async (req, res) => {
+      const id = req.params.id
+      const filter = { _id: new ObjectId(id) }
+      const result = await selectClassCollection.deleteOne(filter)
+      res.send(result)
+    })
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 })
