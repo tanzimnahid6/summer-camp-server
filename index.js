@@ -33,7 +33,7 @@ async function run() {
     const selectClassCollection = client
       .db("summerSchool")
       .collection("selected")
-    const paymentCollection = client.db('summerSchool').collection('payment')
+    const paymentCollection = client.db("summerSchool").collection("payment")
 
     //save user email and role in Db
     app.put("/users/:email", async (req, res) => {
@@ -175,8 +175,8 @@ async function run() {
     //create payment intent=========================================================================================
     app.post("/create-payment-intent", async (req, res) => {
       const { price } = req.body
-      const amount = parseInt(price * 100) 
-      if(!amount){
+      const amount = parseInt(price * 100)
+      if (!amount) {
         return
       }
 
@@ -191,13 +191,22 @@ async function run() {
     })
 
     //payment related api==========================
-    app.post('/payments',async (req,res)=>{
-      const payment = req.body;
+    app.post("/payments", async (req, res) => {
+      const payment = req.body
       const result = await paymentCollection.insertOne(payment)
-      const id = payment.itemId;
-      const query = {_id:new ObjectId(id)}
-      console.log(query)
+      const id = payment.itemId
+      const query = { _id: new ObjectId(id) }
+      // console.log(query)
       const deletedResult = await selectClassCollection.deleteOne(query)
+      res.send(result)
+    })
+
+    //get all payment class by email ====================================
+    app.get("/payment/:email", async (req, res) => {
+      const email = req.params.email
+
+      const query = { email: email }
+      const result = await paymentCollection.find(query).toArray()
       res.send(result)
     })
 
