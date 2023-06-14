@@ -175,7 +175,10 @@ async function run() {
     //create payment intent=========================================================================================
     app.post("/create-payment-intent", async (req, res) => {
       const { price } = req.body
-      const amount = price * 100
+      const amount = parseInt(price * 100) 
+      if(!amount){
+        return
+      }
 
       const paymentIntent = await stripe.paymentIntents.create({
         amount: amount,
@@ -191,6 +194,10 @@ async function run() {
     app.post('/payments',async (req,res)=>{
       const payment = req.body;
       const result = await paymentCollection.insertOne(payment)
+      const id = payment.itemId;
+      const query = {_id:new ObjectId(id)}
+      console.log(query)
+      const deletedResult = await selectClassCollection.deleteOne(query)
       res.send(result)
     })
 
