@@ -198,15 +198,18 @@ async function run() {
       const query = { _id: new ObjectId(id) }
       // console.log(query)
       const deletedResult = await selectClassCollection.deleteOne(query)
+
+
+
       res.send(result)
     })
 
     //get all payment class by email ====================================
     app.get("/payment/:email", async (req, res) => {
       const email = req.params.email
-
       const query = { email: email }
-      const result = await paymentCollection.find(query).toArray()
+      const sortCriteria = { date: -1 }
+      const result = await paymentCollection.find(query).sort(sortCriteria).toArray()
       res.send(result)
     })
 
