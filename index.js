@@ -16,7 +16,7 @@ app.use(express.json())
 
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb")
 const uri =
-  "mongodb+srv://tanzimnahid:hUmpy9viVSYABZZg@cluster0.k2xb8qn.mongodb.net/?retryWrites=true&w=majority"
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.k2xb8qn.mongodb.net/?retryWrites=true&w=majority`
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -34,6 +34,8 @@ async function run() {
       .db("summerSchool")
       .collection("selected")
     const paymentCollection = client.db("summerSchool").collection("payment")
+    const instructorsCollection = client.db("summerSchool").collection("popularInstructore")
+
 
     //save user email and role in Db
     app.put("/users/:email", async (req, res) => {
@@ -47,6 +49,21 @@ async function run() {
       }
       const result = await userCollection.updateOne(filter, updatedDoc, options)
       res.send(result)
+    })
+
+    //get all popular instructore data======================
+    app.get('/popularInstructors',async (req,res)=>{
+      const result = await instructorsCollection.find().toArray()
+      res.send(result)
+    })
+
+    // get instructors data===============================================
+    app.get('/instructors/',async (req,res)=>{
+     
+      const query = {role:"instructor"}
+      const result = await userCollection.find(query).toArray()
+      res.send(result)
+      
     })
 
     //Upload a new class from user=========================================
@@ -198,7 +215,6 @@ async function run() {
       const query = { _id: new ObjectId(id) }
       // console.log(query)
       const deletedResult = await selectClassCollection.deleteOne(query)
-
 
 
       res.send(result)
